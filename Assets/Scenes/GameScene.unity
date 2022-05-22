@@ -452,7 +452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8681918390214548139, guid: 848d068fd78caf24eacc82ca673b8d89, type: 3}
       propertyPath: m_Name
-      value: 6.4
+      value: Spaceship 6.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 848d068fd78caf24eacc82ca673b8d89, type: 3}
