@@ -245,6 +245,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf4bb47d7682f0458041f18e2c18eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forwardSpeed: 25
+  strafeSpeed: 7.5
+  hoverSpeed: 5
+  lookRateSpeed: 90
+  rollSpeed: 90
+  rollAcceleration: 3.5
 --- !u!4 &929591265
 Transform:
   m_ObjectHideFlags: 0
