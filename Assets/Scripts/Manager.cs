@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Manager : MonoBehaviour
 {
     public void Empezar(){
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("SelectionMenu");
     }
 
     public void Credits(){
