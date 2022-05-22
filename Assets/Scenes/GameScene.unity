@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.001388548, g: 0.21973655, b: 0.2858653, a: 1}
+  m_IndirectSpecularColor: {r: 0.0013880796, g: 0.21966872, b: 0.28568906, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -470,7 +470,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2468640972527530534, guid: 6cc686c6703558c408423db7f69fcd30, type: 3}
       propertyPath: m_Name
-      value: 3.5
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2957052195780569244, guid: 6cc686c6703558c408423db7f69fcd30, type: 3}
       propertyPath: m_RootOrder
@@ -523,6 +523,39 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2957052195780569244, guid: 6cc686c6703558c408423db7f69fcd30, type: 3}
   m_PrefabInstance: {fileID: 1434966766}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1493441387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2468640972527530534, guid: 6cc686c6703558c408423db7f69fcd30, type: 3}
+  m_PrefabInstance: {fileID: 1434966766}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1493441388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493441387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c83ad11033070f49b97659fc31a51cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bullet: {fileID: 122648, guid: 6ffb6552b370d4049ada03898e7874ae, type: 3}
+  timer: 2
+  maxBullet: 5
+--- !u!114 &1493441389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493441387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6231fe2d02b0b4482cd68c2782ff27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Objetivo: {fileID: 929591265}
 --- !u!1 &1521481532
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,7 +580,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521481532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.00060272217, y: 7.2385907, z: -12.297645}
+  m_LocalPosition: {x: -90.9, y: 7.2385907, z: -12.297645}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1434966767}
