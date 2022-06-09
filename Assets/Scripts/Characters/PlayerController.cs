@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public float life = 100f;
     public float forwardSpeed = 25f,strafeSpeed = 7.5f,hoverSpeed = 5f;
     private float activeForwardSpeed, activeStrafeSpeed, activeHoverSpeed;
     private float forwardAcceleration = 2.5f, strafeAcceleration = 2f, hoverAcceleration = 2f;
@@ -11,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 lookInput, screenCenter, mouseDistance;
     private float rollInput;
     public float rollSpeed = 90f, rollAcceleration = 3.5f;
+    public Slider LifeSlider;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +22,7 @@ public class PlayerController : MonoBehaviour
         screenCenter.x = Screen.width * 0.5f;
         screenCenter.y = Screen.height * 0.5f;
         Cursor.lockState = CursorLockMode.Confined;
+        LifeSlider.value = life;    
     }
 
     // Update is called once per frame
@@ -57,5 +62,9 @@ public class PlayerController : MonoBehaviour
         transform.position += transform.forward * activeForwardSpeed * Time.deltaTime;
         transform.position += (transform.right * activeStrafeSpeed * Time.deltaTime) 
                                 + (transform.up * activeHoverSpeed * Time.deltaTime);
+
+        LifeSlider.value = life/100;
+        Debug.Log("Vida de la nave: "+ life);
     }
+    
 }
