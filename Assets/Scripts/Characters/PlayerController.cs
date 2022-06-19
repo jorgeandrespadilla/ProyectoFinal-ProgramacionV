@@ -8,13 +8,16 @@ public class PlayerController : MonoBehaviour
     public float life = 100f;
     public float forwardSpeed = 25f,strafeSpeed = 7.5f,hoverSpeed = 5f;
     private float activeForwardSpeed, activeStrafeSpeed, activeHoverSpeed;
-    private float forwardAcceleration = 2.5f, strafeAcceleration = 2f, hoverAcceleration = 2f;
+    private float forwardAcceleration = 2.5f, strafeAcceleration = 2f;
     public float lookRateSpeed = 90f;
     private Vector2 lookInput, screenCenter, mouseDistance;
     private float rollInput;
     public float rollSpeed = 90f, rollAcceleration = 3.5f;
     public Slider LifeSlider;
-    
+    [SerializeField]
+    private GameObject Bullet;
+
+    public int maxBullet=5;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +25,7 @@ public class PlayerController : MonoBehaviour
         screenCenter.x = Screen.width * 0.5f;
         screenCenter.y = Screen.height * 0.5f;
         Cursor.lockState = CursorLockMode.Confined;
-        LifeSlider.value = life;    
+        LifeSlider.value = life;   
     }
 
     // Update is called once per frame
@@ -54,10 +57,14 @@ public class PlayerController : MonoBehaviour
             Input.GetAxisRaw("Horizontal") * strafeSpeed,
             strafeAcceleration * Time.deltaTime);
 
-        activeHoverSpeed = Mathf.Lerp(
-            activeHoverSpeed,
-            Input.GetAxisRaw("Hover") * hoverSpeed,
-            hoverAcceleration * Time.deltaTime);
+        // activeHoverSpeed = Mathf.Lerp(
+        //     activeHoverSpeed,
+        //     Input.GetAxisRaw("Hover") * hoverSpeed,
+        //     hoverAcceleration * Time.deltaTime);
+
+        if(Input.GetKey(KeyCode.Space)){
+            FireBulletCR();
+        }
                                                                                                                                 
         transform.position += transform.forward * activeForwardSpeed * Time.deltaTime;
         transform.position += (transform.right * activeStrafeSpeed * Time.deltaTime) 
@@ -67,4 +74,8 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Vida de la nave: "+ life);
     }
     
+    private void FireBulletCR()
+    {
+       Instantiate(Bullet,transform.position,transform.rotation);
+    }
 }

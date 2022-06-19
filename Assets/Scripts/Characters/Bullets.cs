@@ -16,7 +16,7 @@ public class Bullets : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(FireBulletCR());   
+        StartCoroutine(FireBulletCR());
     }
 
     // Update is called once per frame
