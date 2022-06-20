@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class BulletMovement : MonoBehaviour
 {
     [SerializeField]
@@ -8,18 +9,17 @@ public class BulletMovement : MonoBehaviour
     [SerializeField]
     private float timelife=10f;
     public GameObject creator;
-    PlayerController controller;
-
-    // Start is called before the first frame updateza
+    PlayerController playerController;
+    EnemiesController enemyController;
+    
     void Start()
     {
         Destroy(gameObject,timelife);
         transform.Rotate(90,0,0);
         if(creator == null){
             creator = GameObject.Find("Player");
-        }else if(creator.tag.Equals("Enemy")){
-            controller = GameObject.Find("Player").GetComponent<PlayerController>();
         }
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
     // Update is called once per frame
     void Update()
@@ -30,16 +30,25 @@ public class BulletMovement : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(creator.tag.Equals("Enemy")){
             if(other.tag.Equals("Player")){
-                controller.life -=10;
                 Destroy(gameObject);
-                Debug.Log(controller.life);
+                playerController.life -=10;
             }
         }else if(creator.tag.Equals("Player")){
             if(other.tag.Equals("Enemy")){
+                enemyController = other.GetComponent<EnemiesController>();
                 Destroy(gameObject);
-                Debug.Log("Se dio al enemigo");
+                enemyController.life -=10;
             }
         } 
         
+    }
+
+    private void OnDestroy() {
+        if(creator.tag.Equals("Player")){
+            playerController.count -= 1;
+        }else if(creator.tag.Equals("Enemy")){
+            creator.GetComponent<EnemiesController>().count -= 1;
+            Debug.Log(creator.GetComponent<EnemiesController>().count);
+        }
     }
 }

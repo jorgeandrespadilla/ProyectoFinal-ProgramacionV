@@ -16,8 +16,11 @@ public class PlayerController : MonoBehaviour
     public Slider LifeSlider;
     [SerializeField]
     private GameObject Bullet;
-
-    public int maxBullet=5;
+    public int count = 0;
+    private bool canShoot = true;
+    private float fireRate = 0.5f;
+    private float nextShot = -1f;
+    private int maxBullet=5;
 
     // Start is called before the first frame update
     void Start()
@@ -57,15 +60,17 @@ public class PlayerController : MonoBehaviour
             Input.GetAxisRaw("Horizontal") * strafeSpeed,
             strafeAcceleration * Time.deltaTime);
 
-        // activeHoverSpeed = Mathf.Lerp(
-        //     activeHoverSpeed,
-        //     Input.GetAxisRaw("Hover") * hoverSpeed,
-        //     hoverAcceleration * Time.deltaTime);
-
-        if(Input.GetKey(KeyCode.Space)){
-            FireBulletCR();
+        if(Time.time > nextShot && count < maxBullet){
+            canShoot = true;
+        }else{
+            canShoot = false;
         }
-                                                                                                                                
+
+        if(Input.GetKey(KeyCode.Space) && canShoot == true){
+            FireBulletCR();
+            nextShot = Time.time + fireRate;   
+        }     
+
         transform.position += transform.forward * activeForwardSpeed * Time.deltaTime;
         transform.position += (transform.right * activeStrafeSpeed * Time.deltaTime) 
                                 + (transform.up * activeHoverSpeed * Time.deltaTime);
@@ -76,6 +81,7 @@ public class PlayerController : MonoBehaviour
     
     private void FireBulletCR()
     {
-       Instantiate(Bullet,transform.position,transform.rotation);
+        Instantiate(Bullet,transform.position,transform.rotation);
+        count++;
     }
 }
