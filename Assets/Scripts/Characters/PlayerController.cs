@@ -85,5 +85,5 @@ public class PlayerController : MonoBehaviour
     {
         Instantiate(Bullet,transform.position,transform.rotation);
         count++;
-    }
+    }      
 }

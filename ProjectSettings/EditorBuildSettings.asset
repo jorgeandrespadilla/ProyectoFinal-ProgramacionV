@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SelectionMenu.unity
     guid: c15dcb8f28167f04aa814e5085eda958
+  - enabled: 1
+    path: Assets/Scenes/Context.unity
+    guid: fcba6bcc10e548143bca0eaff1087100
+  - enabled: 1
+    path: Assets/Scenes/Context2.unity
+    guid: cea9e41cf6676de41a3f8ad96be6586f
   m_configObjects: {}
