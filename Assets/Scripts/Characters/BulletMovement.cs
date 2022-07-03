@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class BulletMovement : MonoBehaviour
 {
-    [SerializeField]
-    private float speed = 0.015f;
-    [SerializeField]
-    private float timelife = 5f;
+    private float speed;
+    private float timelife;
     public GameObject creator;
     PlayerController playerController;
     EnemiesController enemyController;
@@ -18,6 +16,8 @@ public class BulletMovement : MonoBehaviour
 
     void Start()
     {
+        timelife = 1;
+        speed = 500;
         Destroy(gameObject,timelife);
         transform.Rotate(90,0,0);
         if(creator == null){
@@ -29,7 +29,7 @@ public class BulletMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.up*speed);   
+        transform.Translate(Vector3.up*Time.fixedDeltaTime*speed);   
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -44,8 +44,7 @@ public class BulletMovement : MonoBehaviour
                 Destroy(gameObject);
                 enemyController.life -=10;
             }
-        } 
-        
+        }
     }
 
     private void OnDestroy() {
