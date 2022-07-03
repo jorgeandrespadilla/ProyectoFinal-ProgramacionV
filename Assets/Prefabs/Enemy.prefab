@@ -99,9 +99,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7645632583588418414}
+  - component: {fileID: 7760031929124214072}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,6 +123,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7760031929124214072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7645632583588418413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16aa773c32a469447ad7e47c367de971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 100
+  remainingLife: 0
+  forwardSpeed: 20
+  count: 0
+  LifeSlider: {fileID: 7645632583568714723}
+  spaceship: {fileID: 4206271781042269889}
+  Bullet: {fileID: 122648, guid: 6ffb6552b370d4049ada03898e7874ae, type: 3}
 --- !u!1 &7645632584086552573
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d854c17acab0cc54cafd38f5a41a191e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _object: {fileID: 0}
+  mainCamera: {fileID: 0}
 --- !u!1 &7645632584337602376
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,6 +488,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 1.3_x
       objectReference: {fileID: 0}
+    - target: {fileID: 5784050967781612583, guid: 3d9ce70bd167b71469f5ab332d2c2f26, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 6561396220807399069, guid: 3d9ce70bd167b71469f5ab332d2c2f26, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -525,20 +549,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6561396220807399069, guid: 3d9ce70bd167b71469f5ab332d2c2f26, type: 3}
   m_PrefabInstance: {fileID: 7645632585009640166}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7645632584163085667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4206271781042269889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16aa773c32a469447ad7e47c367de971, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  life: 100
-  remainingLife: 0
-  count: 0
-  LifeSlider: {fileID: 7645632583568714723}
-  Bullet: {fileID: 122648, guid: 6ffb6552b370d4049ada03898e7874ae, type: 3}

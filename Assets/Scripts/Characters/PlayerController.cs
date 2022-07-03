@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,6 +28,7 @@ public class PlayerController : MonoBehaviour
         screenCenter.x = Screen.width * 0.5f;
         screenCenter.y = Screen.height * 0.5f;
         Cursor.lockState = CursorLockMode.Confined;
+        remainingLife = life;
         LifeSlider.value = life;
         var bulletController = Bullet.GetComponent<BulletMovement>();
         bulletController.setCreator(this.gameObject);
@@ -38,7 +37,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        remainingLife = life;
         lookInput.x = Input.mousePosition.x;
         lookInput.y = Input.mousePosition.y;
 
