@@ -18,6 +18,10 @@ public class Manager : MonoBehaviour
 
     }
 
+    public void Tuto(){
+        SceneManager.LoadScene("Tutorial");
+    }
+
 
     public void Salir()
     {
