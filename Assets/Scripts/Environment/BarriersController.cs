@@ -11,11 +11,13 @@ public class BarriersController : MonoBehaviour
         player = GameObject.Find("Player");
     }
 
-    private void OnTriggerEnter(Collider other) {
-        
-        if(other.tag.Equals("Player")){
-            player.transform.position = new Vector3(0,0,0);
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.tag.Equals("Player"))
+        {
+            player.transform.position = new Vector3(0, 0, 0);
         }
-         
+
     }
 }
