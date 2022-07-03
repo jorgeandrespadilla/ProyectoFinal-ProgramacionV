@@ -5,13 +5,17 @@ using UnityEngine;
 public class BulletMovement : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 10f;
+    private float speed = 0.015f;
     [SerializeField]
-    private float timelife=10f;
+    private float timelife = 5f;
     public GameObject creator;
     PlayerController playerController;
     EnemiesController enemyController;
     
+    public void setCreator(GameObject invoker){
+        creator = invoker;
+    }
+
     void Start()
     {
         Destroy(gameObject,timelife);
@@ -21,10 +25,11 @@ public class BulletMovement : MonoBehaviour
         }
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
+
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.up*Time.deltaTime*speed);   
+        transform.Translate(Vector3.up*speed);   
     }
 
     private void OnTriggerEnter(Collider other) {

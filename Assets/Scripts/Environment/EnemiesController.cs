@@ -10,7 +10,7 @@ public class EnemiesController : MonoBehaviour
     private GameObject Bullet;
     public int count;
     private bool canShoot = true;
-    private float fireRate = 0.5f;
+    private float fireRate = 1.5f;
     private float nextShot = -1f;
     private int maxBullet=5;
 
@@ -18,6 +18,8 @@ public class EnemiesController : MonoBehaviour
     void Start(){
         target = GameObject.Find("Player").GetComponent<Transform>();
         count = 0;
+        var bulletController = Bullet.GetComponent<BulletMovement>();
+        bulletController.setCreator(this.gameObject);
     }
 
     void Update(){

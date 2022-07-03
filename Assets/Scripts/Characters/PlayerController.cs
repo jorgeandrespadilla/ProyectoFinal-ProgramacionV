@@ -28,7 +28,9 @@ public class PlayerController : MonoBehaviour
         screenCenter.x = Screen.width * 0.5f;
         screenCenter.y = Screen.height * 0.5f;
         Cursor.lockState = CursorLockMode.Confined;
-        LifeSlider.value = life;   
+        LifeSlider.value = life;  
+        var bulletController = Bullet.GetComponent<BulletMovement>();
+        bulletController.setCreator(this.gameObject); 
     }
 
     // Update is called once per frame
