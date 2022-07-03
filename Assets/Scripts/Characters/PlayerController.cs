@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public readonly float damage = 10f;
     public float life = 100f;
-    public float forwardSpeed = 25f,strafeSpeed = 7.5f,hoverSpeed = 5f;
+    public float remainingLife;
+    public float forwardSpeed = 25f, strafeSpeed = 7.5f, hoverSpeed = 5f;
     private float activeForwardSpeed, activeStrafeSpeed, activeHoverSpeed;
     private float forwardAcceleration = 2.5f, strafeAcceleration = 2f;
     public float lookRateSpeed = 90f;
@@ -14,13 +14,13 @@ public class PlayerController : MonoBehaviour
     private float rollInput;
     public float rollSpeed = 90f, rollAcceleration = 3.5f;
     public Slider LifeSlider;
+    public int count = 0;
     [SerializeField]
     private GameObject Bullet;
-    public int count = 0;
     private bool canShoot = true;
     private float fireRate = 0.5f;
     private float nextShot = -1f;
-    private int maxBullet=5;
+    private int maxBullet = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -28,9 +28,10 @@ public class PlayerController : MonoBehaviour
         screenCenter.x = Screen.width * 0.5f;
         screenCenter.y = Screen.height * 0.5f;
         Cursor.lockState = CursorLockMode.Confined;
-        LifeSlider.value = life;  
+        remainingLife = life;
+        LifeSlider.value = life;
         var bulletController = Bullet.GetComponent<BulletMovement>();
-        bulletController.setCreator(this.gameObject); 
+        bulletController.setCreator(this.gameObject);
     }
 
     // Update is called once per frame
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour
             mouseDistance.x * lookRateSpeed * Time.deltaTime,
             rollInput * rollSpeed * Time.deltaTime,
             Space.Self);
-        
+
         activeForwardSpeed = Mathf.Lerp(
             activeForwardSpeed,
             Input.GetAxisRaw("Vertical") * forwardSpeed,
@@ -62,28 +63,24 @@ public class PlayerController : MonoBehaviour
             Input.GetAxisRaw("Horizontal") * strafeSpeed,
             strafeAcceleration * Time.deltaTime);
 
-        if(Time.time > nextShot && count < maxBullet){
-            canShoot = true;
-        }else{
-            canShoot = false;
+        canShoot = (Time.time > nextShot && count < maxBullet);
+
+        if (Input.GetKey(KeyCode.Space) && canShoot == true)
+        {
+            FireBulletCR();
+            nextShot = Time.time + fireRate;
         }
 
-        if(Input.GetKey(KeyCode.Space) && canShoot == true){
-            FireBulletCR();
-            nextShot = Time.time + fireRate;   
-        }     
-
         transform.position += transform.forward * activeForwardSpeed * Time.deltaTime;
-        transform.position += (transform.right * activeStrafeSpeed * Time.deltaTime) 
+        transform.position += (transform.right * activeStrafeSpeed * Time.deltaTime)
                                 + (transform.up * activeHoverSpeed * Time.deltaTime);
 
-        LifeSlider.value = life/100;
-        Debug.Log("Vida de la nave: "+ life);
+        LifeSlider.value = remainingLife / life;
     }
-    
+
     private void FireBulletCR()
     {
-        Instantiate(Bullet,transform.position,transform.rotation);
+        Instantiate(Bullet, transform.position, transform.rotation);
         count++;
-    }      
+    }
 }
