@@ -36,21 +36,17 @@ public class BulletMovement : MonoBehaviour
     {
         if (creator.tag.Equals("Enemy"))
         {
-            Debug.Log("Enemy hit by Player"); 
             if (other.tag.Equals("Player"))
             {
-                Debug.Log("Player hit"); 
                 Destroy(gameObject);
                 playerController.remainingLife -= playerController.damage;
             }
         }
         else if (creator.tag.Equals("Player"))
         {
-            Debug.Log("Object hit by Player"); 
             GameObject parent = other.transform.parent.gameObject;
             if (parent.tag.Equals("Enemy"))
             {
-                Debug.Log("Enemy hit");
                 Destroy(gameObject);
                 enemyController = parent.GetComponent<EnemyController>();
                 enemyController.remainingLife -= enemyController.damage;

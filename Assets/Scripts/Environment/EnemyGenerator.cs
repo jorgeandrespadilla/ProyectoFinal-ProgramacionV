@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-public class EnemiGenerator : MonoBehaviour
+public class EnemyGenerator : MonoBehaviour
 {
     public GameObject enemy;
     public float rangeRandom = 100f;

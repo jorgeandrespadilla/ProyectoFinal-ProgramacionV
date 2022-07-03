@@ -6,8 +6,7 @@ public class EnemyController : MonoBehaviour
     public readonly float damage = 10f;
     public float life = 100f;
     public float remainingLife;
-    public float forwardSpeed = 20f;
-    public float forwardSpeedVariation = 8f;
+   
     public int count;
     public Slider LifeSlider;
     private Transform target;
@@ -15,6 +14,9 @@ public class EnemyController : MonoBehaviour
     public GameObject spaceship;
     [SerializeField]
     private GameObject Bullet;
+    private bool shouldMove;
+    private float forwardSpeed = 15f;
+    private float forwardSpeedVariation = 10f;
     private float speed;
     private bool canShoot = true;
     private float fireRate = 1.5f;
@@ -24,8 +26,8 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        // speed = Random.Range(forwardSpeed - forwardSpeedVariation, forwardSpeed + forwardSpeedVariation);
-        Debug.Log(speed);
+        // shouldMove = Random.Range(0, 2) == 0;
+        // speed = Mathf.Floor(Random.Range(forwardSpeed - forwardSpeedVariation, forwardSpeed + forwardSpeedVariation));
         remainingLife = life;
         LifeSlider.value = life;
         count = 0;
@@ -50,7 +52,9 @@ public class EnemyController : MonoBehaviour
         Vector3 OrientacionDeObjetivo = target.position - transform.position;
         Quaternion orientacionDeObjetivoQuaternion = Quaternion.LookRotation(OrientacionDeObjetivo);
 
-        // transform.position += spaceship.transform.forward * speed * Time.deltaTime;
+        // if (shouldMove) {
+        //     transform.position += spaceship.transform.forward * speed * Time.deltaTime;
+        // }
         spaceship.transform.rotation = Quaternion.Slerp(spaceship.transform.rotation, orientacionDeObjetivoQuaternion, Time.deltaTime);
 
         LifeSlider.value = remainingLife / life;

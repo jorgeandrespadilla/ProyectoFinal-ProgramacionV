@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class CanvasMovement : MonoBehaviour
 {
-    [SerializeField]
-    GameObject mainCamera;
+    private GameObject mainCamera;
 
     // Start is called before the first frame update
     void Start()
