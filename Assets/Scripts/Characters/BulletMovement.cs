@@ -16,7 +16,7 @@ public class BulletMovement : MonoBehaviour
     void Start()
     {
         timelife = 1;
-        speed = 500;
+        speed = 250;
         Destroy(gameObject, timelife);
         transform.Rotate(90, 0, 0);
         if (creator == null)
@@ -56,13 +56,16 @@ public class BulletMovement : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (creator.tag.Equals("Player"))
-        {
-            playerController.count -= 1;
+        if(creator!= null){
+            if (creator.tag.Equals("Player"))
+            {
+                playerController.count -= 1;
+            }
+            else if (creator.tag.Equals("Enemy"))
+            {
+                creator.GetComponent<EnemyController>().count -= 1;
+            }
         }
-        else if (creator.tag.Equals("Enemy"))
-        {
-            creator.GetComponent<EnemyController>().count -= 1;
-        }
+        
     }
 }

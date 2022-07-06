@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public readonly float damage = 10f;
+    public readonly float damage = 3f;
     public float life = 100f;
     public float remainingLife;
     public float forwardSpeed = 25f, strafeSpeed = 7.5f, hoverSpeed = 5f;

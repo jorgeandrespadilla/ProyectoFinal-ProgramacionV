@@ -8,7 +8,7 @@ public class EnemyGenerator : MonoBehaviour
 {
     public GameObject enemy;
     public float rangeRandom = 100f;
-    public int quantityOfEnemies = 3;
+    public static int quantityOfEnemies = 3;
 
     
     // Start is called before the first frame update

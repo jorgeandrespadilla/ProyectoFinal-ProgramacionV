@@ -137,11 +137,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   remainingLife: 0
-  forwardSpeed: 20
   count: 0
   LifeSlider: {fileID: 7645632583568714723}
   spaceship: {fileID: 4206271781042269889}
   Bullet: {fileID: 122648, guid: 6ffb6552b370d4049ada03898e7874ae, type: 3}
+  explosion: {fileID: 8689361137942674237, guid: 4024828b2d69d2c42a24b8a8fc040689, type: 3}
 --- !u!1 &7645632584086552573
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d854c17acab0cc54cafd38f5a41a191e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
 --- !u!1 &7645632584337602376
 GameObject:
   m_ObjectHideFlags: 0

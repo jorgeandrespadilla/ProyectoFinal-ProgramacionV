@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GameControl : MonoBehaviour
 {
@@ -33,6 +35,14 @@ public class GameControl : MonoBehaviour
         // Handle pause
         if (Input.GetKeyDown(KeyCode.Escape)) {
             SetIsPaused(!isPaused);
+        }
+
+        if(EnemyGenerator.quantityOfEnemies == 0){
+            SceneManager.LoadScene("WinScene");
+        }
+
+        if(playerObject.GetComponent<PlayerController>().remainingLife == 0){
+            SceneManager.LoadScene("LoseScene");
         }
     }
 

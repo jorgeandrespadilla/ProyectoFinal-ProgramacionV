@@ -22,6 +22,7 @@ public class EnemyController : MonoBehaviour
     private float fireRate = 1.5f;
     private float nextShot = -1f;
     private int maxBullet = 5;
+    public GameObject explosion;
 
 
     void Start()
@@ -31,19 +32,26 @@ public class EnemyController : MonoBehaviour
         remainingLife = life;
         LifeSlider.value = life;
         count = 0;
-        target = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        target = GameObject.FindWithTag("Player").GetComponent<Transform>(); // Corregir tag porque player tiene el prefab y el contenedor
         var bulletController = Bullet.GetComponent<BulletMovement>();
         bulletController.setCreator(this.gameObject);
     }
 
     void Update()
     {
-        TargetEnemy();
-        canShoot = (Time.time > nextShot && count < maxBullet);
-        if (canShoot == true)
-        {
-            FireBulletCR();
-            nextShot = Time.time + fireRate;
+        if(target != null){
+            if(remainingLife < 0){
+                Instantiate(explosion, transform.position, transform.rotation);
+                Destroy(gameObject);
+                EnemyGenerator.quantityOfEnemies -= 1;
+            }
+            TargetEnemy();
+            canShoot = (Time.time > nextShot && count < maxBullet);
+            if (canShoot == true)
+            {
+                FireBulletCR();
+                nextShot = Time.time + fireRate;
+            }
         }
     }
 
@@ -62,6 +70,8 @@ public class EnemyController : MonoBehaviour
 
     private void FireBulletCR()
     {
+        var bulletController = Bullet.GetComponent<BulletMovement>();
+        bulletController.setCreator(gameObject);
         Instantiate(Bullet, spaceship.transform.position, spaceship.transform.rotation);
         count++;
     }
