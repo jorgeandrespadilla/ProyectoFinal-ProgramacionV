@@ -41,7 +41,7 @@ public class GameControl : MonoBehaviour
             SceneManager.LoadScene("WinScene");
         }
 
-        if(playerObject.GetComponent<PlayerController>().remainingLife == 0){
+        if(playerObject.GetComponent<PlayerController>().remainingLife <= 0){
             SceneManager.LoadScene("LoseScene");
         }
     }

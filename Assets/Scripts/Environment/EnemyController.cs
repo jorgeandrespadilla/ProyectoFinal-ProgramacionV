@@ -40,7 +40,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         if(target != null){
-            if(remainingLife < 0){
+            if(remainingLife <= 0){
                 Instantiate(explosion, transform.position, transform.rotation);
                 Destroy(gameObject);
                 EnemyGenerator.quantityOfEnemies -= 1;
