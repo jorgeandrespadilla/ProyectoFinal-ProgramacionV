@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Manager : MonoBehaviour
 {
     public void Empezar(){
-        SceneManager.LoadScene("SelectionMenu");
+        SceneManager.LoadScene("Context");
     }
 
     public void Credits(){
@@ -14,12 +14,18 @@ public class Manager : MonoBehaviour
 
     }
     public void Menus(){
-        SceneManager.LoadScene("MenuScene");
+        SceneManager.LoadScene("Context2");
 
     }
 
+    public void Tuto(){
+        SceneManager.LoadScene("Tutorial");
+    }
 
-    public void Salir(){
 
-        Application.Quit();   }
+    public void Salir()
+    {
+
+        Application.Quit();   
+    }
 }
